@@ -18,16 +18,16 @@ public class ArrayQuiz02 {
 
         Scanner scan = new Scanner(System.in);
 
-        String[] friends = {"철수", "영희", "민수", "지수", "하나"};
-
+        String[] friends = {"무지", "네오", "어피치", "라이언", "춘식이"};
+        System.out.println("현재 친구 목록: " + Arrays.toString(friends));
         while (friends.length > 0) {
             // 현재 친구 목록 출력
-            System.out.println("현재 친구 목록: " + Arrays.toString(friends));
 
             System.out.print("삭제할 친구 이름을 입력하세요 ('그만' 입력 시 종료): ");
             String name = scan.next();
 
             if (name.equals("그만")) {
+                System.out.println("삭제후 친구 목록: " + Arrays.toString(friends));
                 break;
             }
 
@@ -42,7 +42,7 @@ public class ArrayQuiz02 {
 
             // 삭제할 친구가 목록에 없는 경우
             if (index == -1) {
-                System.out.println("해당 이름이 없습니다.");
+                System.out.println(name + " 라는 이름이 없습니다.");
                 continue;
             }
 
@@ -63,6 +63,7 @@ public class ArrayQuiz02 {
                 System.out.println("더 이상 삭제할 친구가 없습니다. 프로그램을 종료합니다.");
                 break;
             }
+            System.out.println("삭제후 친구 목록: " + Arrays.toString(friends));
         }
 
         scan.close();

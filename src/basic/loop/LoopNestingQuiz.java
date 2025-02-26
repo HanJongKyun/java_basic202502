@@ -3,9 +3,9 @@ package basic.loop;
 import java.util.Scanner;
 
 public class LoopNestingQuiz {
-    public static void main(String[] args) {
 
-           /*
+    public static void main(String[] args) {
+        /*
 		 - 정수를 하나 입력받아서 해당 숫자까지의 모든 소수를
 		  가로로 출력하고, 그 소수들의 개수를 구하는 로직을 작성합니다.
 
@@ -15,37 +15,23 @@ public class LoopNestingQuiz {
 		 소수의 개수: 10개
 		*/
 
-        Scanner scan = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("정수: ");
+        int num = sc.nextInt();
 
-        System.out.print("정수를 입력하세요: ");
-        int num = scan.nextInt();
-
-        int primeCount = 0; // 소수 개수 카운트
-
-        System.out.print("소수: ");
-
-        // 2부터 입력받은 숫자까지 반복
-        for (int i = 2; i <= num; i++) {
-            boolean isPrime = true; // 소수 판별
-
-            // 2부터 i의 제곱근까지 나눠서 소수인지 판별
-            for (int j = 2; j * j <= i; j++) {
-                if (i % j == 0) { // 나누어 떨어지면 소수가 아님
-                    isPrime = false;
-                    break;
-                }
-            }
-
-            // 소수라면 출력 및 개수 증가
-            if (isPrime) {
-                System.out.print(i + " ");
-                primeCount++;
-            }
+    int count = 0; // 소수의 개수가 몇 개인지를 기억할 변수.
+        for (int i=2; i <= num; i++) {
+        int cnt = 0; // 소수 판별을 위해 나누어 떨어진 횟수를 세 줄 변수.
+        for (int j=1; j<=i; j++) {
+            if (i % j == 0) cnt++;
         }
+        if (cnt == 2) {
+            System.out.print(i + " ");
+            count++;
+        }
+    }
+        System.out.println("\n소수의 개수: " + count + "개");
 
-        System.out.println("\n소수의 개수: " + primeCount + "개");
-
-        scan.close();
-
+        sc.close();
     }
 }

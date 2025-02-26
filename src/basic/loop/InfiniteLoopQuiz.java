@@ -15,43 +15,55 @@ public class InfiniteLoopQuiz {
 		 */
 
         Scanner scan = new Scanner(System.in);
-        Random rand = new Random();
 
         int correctCount = 0; // 정답 횟수
         int wrongCount = 0;   // 오답 횟수
 
         while (true) {
             // 1~100 사이의 난수 2개 생성
-            int num1 = rand.nextInt(100) + 1;
-            int num2 = rand.nextInt(100) + 1;
-            int correctAnswer = num1 + num2;
+            int num1 = (int) (Math.random() * 100 + 1);
+            int num2 = (int) (Math.random() * 100 + 1);
+            int operator = (int) (Math.random() * 4);  // 0 ~ 3
+            int correct = 0;
 
-
-            System.out.println(num1 + " + " + num2 + " = ???");
-            System.out.println("정답을 모르면 0을 입력하세요.");
+            switch (operator) {
+                case 0:
+                    System.out.printf("%d + %d = ???\n", num1, num2);
+                    correct = num1 + num2;
+                    break;
+                case 1:
+                    System.out.printf("%d - %d = ???\n", num1, num2);
+                    correct = num1 - num2;
+                    break;
+                case 2:
+                    System.out.printf("%d x %d = ???\n", num1, num2);
+                    correct = num1 * num2;
+                    break;
+                case 3:
+                    System.out.printf("%d / %d = ???\n", num1, num2);
+                    correct = num1 / num2;
+                    break;
+            }
             System.out.print("> ");
-            int userAnswer = scan.nextInt();
-
-            // 0 입력 시 종료
-            if (userAnswer == 0) {
-                System.out.println("종료.");
+            int anwer = scan.nextInt();
+            
+            if(anwer == correct){
+                System.out.println("정답입니다!");
+                correctCount++;
+            }
+            else if(anwer == 0){
+                System.out.println("종료합니다.");
                 break;
             }
-
-            // 정답 체크
-            if (userAnswer == correctAnswer) {
-                System.out.println("정답!");
-                correctCount++;
-            } else {
-                System.out.println("틀림! 정답은 " + correctAnswer + "입니다.");
+            else{
+                System.out.println("틀렸습니다.");
                 wrongCount++;
             }
         }
-
-        scan.close();
-
         // 정답 및 오답 횟수 출력
-        System.out.println("정답 횟수: " + correctCount);
-        System.out.println("오답 횟수: " + wrongCount);
+        System.out.println("===================================================");
+        System.out.println("정답 횟수: " + correctCount + "회");
+        System.out.println("오답 횟수: " + wrongCount + "회");
+
     }
 }

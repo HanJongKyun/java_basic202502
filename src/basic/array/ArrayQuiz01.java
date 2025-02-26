@@ -46,6 +46,6 @@ public class ArrayQuiz01 {
 
         scan.close();
 
-        System.out.println("입력된 음식 목록: " + Arrays.toString(foods));
+        System.out.println("음식 목록: " + Arrays.toString(foods));
     }
 }
