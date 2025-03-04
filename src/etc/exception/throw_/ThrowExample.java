@@ -16,6 +16,7 @@ public class ThrowExample {
         return total;
     }
 
+
     public static void main(String[] args) {
         try {
             int result1 = calcTotat(100);
